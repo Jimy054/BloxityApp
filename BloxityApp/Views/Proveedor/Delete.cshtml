@@ -1,0 +1,63 @@
+﻿@model BloxityApp.Models.ProveedorModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Delete</h1>
+
+<h3>Esta seguro que quieres eliminar este proveedor? Se eliminaran todos los productos asociados</h3>
+<div>
+    <hr />
+   <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RazonSocial)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RazonSocial)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Rfc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Rfc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaDeCreacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaDeCreacion)
+        </dd>
+
+        @if (Model.FechaDeModificacion != null)
+        {
+            <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaDeModificacion)
+        </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.FechaDeModificacion)
+            </dd>
+        }
+        else
+        {      <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaDeModificacion)
+        </dt>       
+            <dd class = "col-sm-10">
+                    Sin Modificacion
+           </dd>
+        }
+
+    </dl>
+    
+    <form asp-action="BorrarProveedorYProductos">     
+        <input type="hidden" asp-for="ProveedorId" />        
+        <input type="submit" value="Delete" class="btn btn-danger"  /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

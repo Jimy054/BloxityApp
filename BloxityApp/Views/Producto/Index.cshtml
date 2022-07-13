@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BloxityApp.Models.ProductoModel>
+@ViewBag.Message
+@{
+}
+
+<h1>Index: @ViewBag.quantity</h1>
+  
+
+
+<p>
+    <a asp-action="Create">Create New</a>   
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Costo)
+            </th>
+            <th>
+                Proveedor
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaDeCreacion)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model?.Count() > 0)
+        {
+            @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Unidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Costo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proveedor.RazonSocial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaDeCreacion)
+                </td>
+            </tr>
+            }
+
+          <tr>
+                <td>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
